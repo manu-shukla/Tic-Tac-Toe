@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <div class="section">
+      <h1 style="text-align: center" class="rotate-scale-up">
+        The Classic Tic Tac Toe
+      </h1>
+      <span>Two Player Mode</span>
+      <i
+        class="bi bi-lightbulb-fill"
+        style="font-size: 2.3rem; cursor: pointer"
+        onclick="darkMode()"
+      ></i>
+    </div>
+    <div id="main" class="container my-5">
+      <div class="container scores" id="scores"></div>
+      <table id="mytable">
+        <tr>
+          <td class="cell" id="0"></td>
+          <td class="cell" id="1"></td>
+          <td class="cell" id="2"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="3"></td>
+          <td class="cell" id="4"></td>
+          <td class="cell" id="5"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="6"></td>
+          <td class="cell" id="7"></td>
+          <td class="cell" id="8"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="endgame">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                id="exampleModalLabel"
+                style="color: black"
+              >
+                Game Over
+              </h5>
+            </div>
+            <div class="modal-body" style="color: black">
+              <h2 id="status"></h2>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" onclick="back()">
+                New Game
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                onclick="startGame()"
+              >
+                Restart Existing Game
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bounce-in-top">
+      <a href="https://github.com/manu-shukla" target="_blank"
+        ><i class="bi bi-github" style="font-size: 2rem; cursor: pointer"></i
+      ></a>
+      Website Created By Manu Shukla
+    </footer>
+    <script src="two.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
