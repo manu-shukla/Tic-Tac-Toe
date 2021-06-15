@@ -38,7 +38,7 @@ const winSet = [
 let k=1;
 const cells = document.querySelectorAll(".cell");
 
-
+  
 function startGame() {
     
     let scores = document.getElementById("scores");

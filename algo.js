@@ -16,13 +16,12 @@ const winSet = [
   [6, 4, 2],
 ];
 
-
 const cells = document.querySelectorAll(".cell");
 
 // Form Control
 let forms = document.getElementById("forms");
 let single;
-let playfirst;
+let playfirst = "";
 let comscore = 0,
   perscore = 0,
   k = 1;
@@ -108,7 +107,7 @@ function singlePlayer() {
 }
 
 function playsingle() {
-  person_name = prompt("Enter Player Name:", "Player")
+  person_name = prompt("Enter Player Name:", "Player");
   if (select.value == "0") {
     alert("Please select a correct Option!");
     return;
@@ -151,27 +150,45 @@ function startGame() {
     cells[i].addEventListener("click", turnClick, false);
   }
   if (playfirst == "ai") {
-    board[0] = computer;
-    cells[0].innerText = computer;
+  cells[0].innerText = computer;
+  board[0] = computer;
   }
+    
 }
 
 function turnClick(square) {
   let audio = new Audio("./scribble.wav");
+  
   if (typeof board[square.target.id] == "number") {
     {
       audio.play();
       turn(square.target.id, person);
+     
     }
     if (!checkWin(board, person) && !checkTie()) {
-     
       turn(bestCell(), computer);
     }
   }
 }
 
 function turn(squareId, player) {
+  console.log(squareId);
   board[squareId] = player;
+  let temp = true;
+  for (let i of board) {
+    if (typeof i == "number") temp = false;
+  }
+  if(temp==true&&playfirst=="ai")
+  {
+    document.getElementById(squareId).innerText = player;
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].style.backgroundColor = "green";
+      cells[i].removeEventListener("click", turnClick, false);
+    }
+
+    declareWinner(`Tie Game!`);
+   
+  }
   document.getElementById(squareId).innerText = player;
   let gameWon = checkWin(board, player);
   if (gameWon) gameOver(gameWon);
@@ -202,7 +219,7 @@ function gameOver(gameWon) {
     ++perscore;
     declareWinner(`You Won!`);
   } else {
-   ++comscore
+    ++comscore;
     declareWinner(`You Lost! Better Luck Next Time :(`);
   }
 }
@@ -286,6 +303,5 @@ function minMaxAlgo(newBoard, player) {
 function darkMode() {
   let element = document.body;
   element.classList.toggle("dark-mode");
-for(i of cells)
-i.classList.toggle("tablecolor");
+  for (i of cells) i.classList.toggle("tablecolor");
 }
