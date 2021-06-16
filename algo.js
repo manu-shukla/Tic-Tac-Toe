@@ -37,13 +37,14 @@ let select = document.getElementById("mode");
 function playerMode() {
   if (select.value == "0") {
     alert("Please Select a Mode!");
+    return;
   }
   if (select.value == "1") {
     single = true;
   } else if (select.value == "2") {
     single = false;
   }
-  document.getElementById("next").onclick = roleSelect;
+  roleSelect();
 }
 function roleSelect() {
   select.innerHTML = null;
@@ -150,20 +151,18 @@ function startGame() {
     cells[i].addEventListener("click", turnClick, false);
   }
   if (playfirst == "ai") {
-  cells[0].innerText = computer;
-  board[0] = computer;
+    cells[0].innerText = computer;
+    board[0] = computer;
   }
-    
 }
 
 function turnClick(square) {
   let audio = new Audio("./scribble.wav");
-  
+
   if (typeof board[square.target.id] == "number") {
     {
       audio.play();
       turn(square.target.id, person);
-     
     }
     if (!checkWin(board, person) && !checkTie()) {
       turn(bestCell(), computer);
@@ -178,8 +177,7 @@ function turn(squareId, player) {
   for (let i of board) {
     if (typeof i == "number") temp = false;
   }
-  if(temp==true&&playfirst=="ai")
-  {
+  if (temp == true && playfirst == "ai") {
     document.getElementById(squareId).innerText = player;
     for (let i = 0; i < cells.length; i++) {
       cells[i].style.backgroundColor = "green";
@@ -187,7 +185,6 @@ function turn(squareId, player) {
     }
 
     declareWinner(`Tie Game!`);
-   
   }
   document.getElementById(squareId).innerText = player;
   let gameWon = checkWin(board, player);
