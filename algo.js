@@ -108,15 +108,16 @@ function singlePlayer() {
 }
 
 function playsingle() {
-  person_name = prompt("Enter Player Name:", "Player");
   if (select.value == "0") {
     alert("Please select a correct Option!");
     return;
   }
   if (select.value == "you") {
     playfirst = "you";
+    person_name = prompt("Enter Player Name:", "Player");
   } else if (select.value == "ai") {
     playfirst = "ai";
+    person_name = prompt("Enter Player Name:", "Player");
   }
   forms.style.visibility = "hidden";
   startGame();
